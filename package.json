@@ -1,5 +1,8 @@
 {
-  "devDependencies": {
-    "gulp": "^3.9.1"
-  }
+  "name": "m-swiper",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:xrr2016/mSwiper.git",
+  "author": "xrr2016 <xiaoranran1993@163.com>",
+  "license": "MIT"
 }
