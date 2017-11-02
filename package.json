@@ -2,7 +2,14 @@
   "name": "m-swiper",
   "version": "1.0.0",
   "main": "index.js",
+  "scripts": {
+    "dev": "lite-server"
+  },
   "repository": "git@github.com:xrr2016/mSwiper.git",
   "author": "xrr2016 <xiaoranran1993@163.com>",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "global": "^4.3.2",
+    "lite-server": "^2.3.0"
+  }
 }

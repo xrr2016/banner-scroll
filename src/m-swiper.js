@@ -1,11 +1,13 @@
 class MSwiperPage {
-  constructor(element, prev, next) {
+  constructor(element, index, prev, next) {
     this.element = element
+    this.index = index
     this.prev = prev
     this.next = next
     this.threshold = 50
     this.touchOffset = 0
     this.onGoingTouchs = []
+    this.element.style.zIndex = -this.index
     this.element.addEventListener(
       'touchstart',
       this.handleStart.bind(this),
@@ -26,25 +28,32 @@ class MSwiperPage {
   handleMove(event) {
     event.preventDefault()
     this.onGoingTouchs.push(event.targetTouches[0])
-    console.log(this.onGoingTouchs)
+    // requestAnimationFrame(this.move)
   }
   handleEnd(event) {
     const touch = event.changedTouches[0]
     this.touchOffset = touch.pageY - this.touchStartPageY
     if (Math.abs(this.touchOffset) > this.threshold) {
-      console.log('大于阈值')
+      this.hide()
       if (this.touchOffset > 0) {
         console.log('下一页')
+        this.next.show()
       } else {
-        console.log('上一页')        
+        console.log('上一页')
+        this.prev.show()
       }
     } else {
       console.log('小于阈值')
     }
   }
-  show () {}
-  move () {}
-  hide () {}
+  show() {
+    this.element.classList.remove('ms-hide')
+  }
+  move() {
+  }
+  hide() {
+    this.element.classList.add('ms-hide')
+  }
 }
 
 class MSwiper {
@@ -63,19 +72,26 @@ class MSwiper {
         this.pages.push(
           new MSwiperPage(
             this.nodes[i],
+            i,
             this.nodes[this.nodes.length - 1],
             this.nodes[i + 1]
           )
         )
       } else if (i === this.nodes.length - 1) {
         this.pages.push(
-          new MSwiperPage(this.nodes[i], this.nodes[i - 1], this.nodes[0])
+          new MSwiperPage(this.nodes[i], i, this.nodes[i - 1], this.nodes[0])
         )
       } else {
         this.pages.push(
-          new MSwiperPage(this.nodes[i], this.nodes[i - 1], this.nodes[i + 1])
+          new MSwiperPage(
+            this.nodes[i],
+            i,
+            this.nodes[i - 1],
+            this.nodes[i + 1]
+          )
         )
       }
     }
+    console.log(this.pages)
   }
 }
