@@ -4,9 +4,46 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>mSwiper</title>
+  <title>m-swiper</title>
+  <link rel="stylesheet" href="./src/m-swiper.css">
+  <style>
+    .ms-container div {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 5em;
+      font-weight: bold;
+      color: #fff;
+    }
+    .page-1 {
+      background-image: linear-gradient(45deg, #ff9a9e 0%, #fad0c4 99%, #fad0c4 100%);
+    }
+    .page-2 {
+      background-image: linear-gradient(to top, #a18cd1 0%, #fbc2eb 100%);
+    }
+    .page-3 {
+      background-image: linear-gradient(to top, #fbc2eb 0%, #a6c1ee 100%);
+    }
+    .page-4 {
+      background-image: linear-gradient(120deg, #f6d365 0%, #fda085 100%);
+    }
+    .page-5 {
+      background-image: linear-gradient(120deg, #84fab0 0%, #8fd3f4 100%);
+    }
+  </style>
 </head>
 <body>
-  
+  <section class="ms-container">
+    <div class="ms-page page-1">1</div>
+    <div class="ms-page page-2">2</div>
+    <div class="ms-page page-3">3</div>
+    <!-- <div class="ms-page page-4">4</div> -->
+    <!-- <div class="ms-page page-5">5</div> -->
+    <div>6</div>
+  </section>
+  <script src="./src/m-swiper.js"></script>
+  <script>
+    new MSwiper()
+  </script>
 </body>
 </html>
